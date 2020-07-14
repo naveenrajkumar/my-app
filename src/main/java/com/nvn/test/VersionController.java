@@ -31,9 +31,8 @@ public class VersionController {
 	    ClassLoader classLoader = getClass().getClassLoader();
 	    InputStream inputStream = classLoader.getResourceAsStream("git.properties");
 	    try {
-	        return readFromInputStream(inputStream)+myConfig.getVersion();
+	        return readFromInputStream(inputStream) + myConfig.getVersion();
 	    } catch (IOException e) {
-	        e.printStackTrace();
 	        return "Git version not retrieved";
 	    }
 	}
@@ -43,8 +42,8 @@ public class VersionController {
 	    try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 	        String line;
 	        while ((line = br.readLine()) != null) {
-	        	if(line.contains("git.commit.id=")) {
-	        		resultString=line.split("=")[1];
+	        	if (line.contains("git.commit.id=")) {
+	        		resultString = line.split("=")[1];
 	        	}
 	        }
 	    }

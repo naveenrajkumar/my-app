@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+
+    <Match>
+        <Class name="com.nvn.test.VersionController" />
+        <Method name="readFromInputStream" />
+        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+
+    <Match>
+        <Class name="com.nvn.test.Application" />
+        <Method name="main" />
+        <Bug pattern="DM_DEFAULT_ENCODING" />
+    </Match>
+
+</FindBugsFilter>
