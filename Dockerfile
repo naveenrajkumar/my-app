@@ -3,13 +3,17 @@ FROM gradle:jdk8 AS GRADLE_BUILD
 MAINTAINER Naveen R
 
 COPY build.gradle /build/
+COPY checkstyle.xml /build/
+COPY excludeFilter.xml /build/
 COPY src /build/src/
-COPY *gradle* /build/
+COPY gradlew /build/
+COPY gradle /build/gradle/
+COPY settings.gradle /build/
 COPY .git /build/
 
 
 WORKDIR /build/
-RUN gradle build
+RUN ./gradlew clean build --stacktrace
 
 FROM openjdk:8-jre-alpine
 

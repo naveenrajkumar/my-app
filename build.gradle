@@ -5,25 +5,12 @@ plugins {
 	id "com.gorylenko.gradle-git-properties" version "2.2.2"
 	id 'checkstyle'
 	id 'findbugs'
-
 }
-
-checkstyle {
-	toolVersion '7.8.1'
-	configFile file("config/checkstyle/checkstyle.xml")
-}
-checkstyleMain {
-	source ='src/main/java'
-}
-checkstyleTest {
-	source ='src/test/java'
-}
-
 findbugs {
 	ignoreFailures = true
 	toolVersion = "3.0.1"
 	sourceSets=[sourceSets.main]
-	excludeFilter = file("config/findbugs/excludeFilter.xml")
+	excludeFilter = file("excludeFilter.xml")
 	reportsDir = file("$project.buildDir/reports/findbugs")
 	effort = "max"
 }
@@ -33,6 +20,18 @@ tasks.withType(FindBugs) {
 		html.enabled true
 	}
 }
+
+checkstyle {
+	toolVersion '7.8.1'
+	configFile file("checkstyle.xml")
+}
+checkstyleMain {
+	source ='src/main/java'
+}
+checkstyleTest {
+	source ='src/test/java'
+}
+
 group = 'com.nvn'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
