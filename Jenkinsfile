@@ -16,6 +16,7 @@ node {
     }
     stage(" deploy"){
         sh "docker stop my-app || exit 0"
+        sh "docker rm my-app || exit 0"
         sh "docker container run --name my-app -d -p 8081:8080 my-app"
     }   
    
